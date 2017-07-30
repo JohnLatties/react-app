@@ -1,13 +1,20 @@
 //dependences
-import React from 'react';
-import ReactDom from 'react-dom';
-import {Router, Route, IndexRoute, hashHistory} from 'react-router';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Router, Route, IndexRoute, hashHistory } from "react-router";
 
-//modules
-import  Favorites from './pages/Favorites';
-import  Todos  from './pages/Todos';
-import  Layout from './pages/Layout';
-import  Settings from './pages/Settings';
+import Favorites from "./pages/Favorites";
+import Todos from "./pages/Todos";
+import Layout from "./pages/Layout";
+import Settings from "./pages/Settings";
 
-const app = document.getElementById('app');
-ReactDom.render(<div></div>, app);
+
+ReactDOM.render(
+  <Router history={hashHistory}>
+    <Route path="/" component={Layout}>
+      <IndexRoute component={Todos}></IndexRoute>
+      <Route path="favorites" component={Favorites}></Route>
+      <Route path="settings" component={Settings}></Route>
+    </Route>
+  </Router>,
+document.getElementById('app'));
